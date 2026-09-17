@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>IssueBoard</title>
+    <meta
+        name="description"
+        content="A simple GitHub issue dashboard for public repositories."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header class="hero">
+            <h1>🐛 IssueBoard</h1>
+            <p>
+                View and explore issues from any public GitHub repository.
+            </p>
+        </header>
+
+        <section class="search-section">
+            <form id="repoForm">
+
+                <label for="repoInput">GitHub Repository</label>
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="repoInput"
+                        placeholder="owner/repository"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <button type="submit">
+                        Analyze
+                    </button>
+                </div>
+
+            </form>
+
+            <p class="example">
+                Example:
+                <code>Mireli5656/IssueBoard</code>
+            </p>
+        </section>
+
+        <section id="loading" class="status hidden">
+            <p>Loading repository...</p>
+        </section>
+
+        <section id="error" class="status error hidden">
+            <p id="errorMessage"></p>
+        </section>
+
+        <section id="dashboard" class="hidden">
+
+            <div class="repo-header">
+
+                <div>
+                    <h2 id="repoName">Repository</h2>
+                    <p id="repoDescription"></p>
+                </div>
+
+                <a
+                    id="repoLink"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View on GitHub ↗
+                </a>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <span class="stat-label">Open</span>
+                    <strong id="openCount">0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Closed</span>
+                    <strong id="closedCount">0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Total</span>
+                    <strong id="totalCount">0</strong>
+                </div>
+
+            </div>
+
+            <div class="issues-header">
+
+                <h2>Issues</h2>
+
+                <select id="issueFilter">
+                    <option value="all">All</option>
+                    <option value="open">Open</option>
+                    <option value="closed">Closed</option>
+                </select>
+
+            </div>
+
+            <div id="issuesList" class="issues-list">
+                <!-- Issues will be added by JavaScript -->
+            </div>
+
+            <div id="pagination" class="pagination hidden">
+
+                <button id="prevPage">
+                    ← Previous
+                </button>
+
+                <span id="pageNumber">
+                    Page 1
+                </span>
+
+                <button id="nextPage">
+                    Next →
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
